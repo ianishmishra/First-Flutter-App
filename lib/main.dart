@@ -1,4 +1,5 @@
-import 'package:firstapp8hours/homepage.dart';
+import 'package:firstapp8hours/pages/homepage.dart';
+import 'package:firstapp8hours/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -14,7 +15,19 @@ class MyApp  extends StatelessWidget {
     int days = 30;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage()
+
+      themeMode: ThemeMode.light,
+      theme: ThemeData(primarySwatch: Colors.red),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+      ),
+      // initialRoute: "/home",
+      routes: {
+        "/":(context) => LoginPage(), // oboject of login page class
+        "/home":(context) => HomePage(),// oboject of Home page class
+        "/login":(context) => LoginPage(),
+      },
+
     );
   }
 }
