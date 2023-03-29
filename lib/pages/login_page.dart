@@ -1,5 +1,6 @@
 import 'package:firstapp8hours/utils/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class LoginPage extends StatefulWidget {
 
@@ -17,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         changeButton = true;
       });
-      await Future.delayed(Duration(seconds: 1));
+      await Future.delayed(Duration(milliseconds: 200));
       await Navigator.pushNamed(context, MyRoutes.homeRoute);
       setState(() {
         changeButton = false;
@@ -38,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
                 fit: BoxFit.cover,
               ),
               SizedBox(height: 20,),
-              Text("Welcome $name",
+              Text("Welcome ${name.toUpperCase()}",
                 style: TextStyle(
                     fontSize: 28,
                     ),
@@ -54,9 +55,15 @@ class _LoginPageState extends State<LoginPage> {
                         hintText: "Enter Username",
                         labelText: "Username",
                       ),
+                      maxLength: 8,
+                      inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp("[a-z,0-9]")),],
+
+
                       validator: (value){
                         if(value!.isEmpty){
                           return "Username cannot be empty";
+                        }else if(value != "anish"){
+                          return "Username Incorrect";
                         }
                         return null;
                       },
@@ -73,13 +80,15 @@ class _LoginPageState extends State<LoginPage> {
                         hintText: "Enter Password",
                         labelText: "Password",
                       ),
+                      maxLength: 6,
                       validator: (value){
                         if(value!.isEmpty){
                           return "Password cannot be Empty";
                         }else if(value.length<6){
                           return "Password length should be atleast 6";
+                        }else if(value != "123456"){
+                          return "Password Incorrect";
                         }
-
                         return null;
                       },
                     ),
@@ -92,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: InkWell(
                         onTap: () => moveToHome(context),
                         child: AnimatedContainer(
-                          duration: Duration(seconds: 1),
+                          duration: Duration(milliseconds: 200),
                           width: changeButton? 50 : 160,
                           height: 50,
                           alignment: Alignment.center,
