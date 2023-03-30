@@ -35,15 +35,15 @@ class CatalogItem extends StatelessWidget {
                 children: [
                   "\₹ ${catalog.price}.00".text.bold.xl.make(),
                   ElevatedButton(
-                    // onPressed: () {},
+                    onPressed: () {},
 
                     // only for test
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomeDetailPage(catalog: catalog),
-                      ),
-                    ),
+                    // onPressed: () => Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => HomeDetailPage(catalog: catalog),
+                    //   ),
+                    // ),
                     // only for test
 
                     style: ButtonStyle(
