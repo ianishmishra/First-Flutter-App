@@ -4,16 +4,17 @@ import 'package:firstapp8hours/utils/routes.dart';
 import 'package:firstapp8hours/widgets/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-void main(){
+void main() {
   runApp(MyApp());
 }
 
-class MyApp  extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
@@ -21,9 +22,10 @@ class MyApp  extends StatelessWidget {
       darkTheme: Mytheme.darkTheme(context),
       initialRoute: "/home",
       routes: {
-        "/":(context) => LoginPage(), // oboject of login page class
-        MyRoutes.homeRoute:(context) => HomePage(),// oboject of Home page class
-        MyRoutes.loginRoute:(context) =>  LoginPage(),
+        "/": (context) => LoginPage(), // oboject of login page class
+        MyRoutes.homeRoute: (context) =>
+            HomePage(), // oboject of Home page class
+        MyRoutes.loginRoute: (context) => LoginPage(),
       },
     );
   }
