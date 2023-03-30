@@ -11,7 +11,9 @@ class HomeDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Mytheme.creamColor,
+      ),
       backgroundColor: Mytheme.creamColor,
       bottomNavigationBar: Container(
         color: Colors.white,
@@ -19,7 +21,7 @@ class HomeDetailPage extends StatelessWidget {
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
           children: [
-            "\$${catalog.price}".text.red800.bold.xl4.make(),
+            "\₹ ${catalog.price}.00".text.red800.bold.xl4.make(),
             ElevatedButton(
               onPressed: () {},
               style: ButtonStyle(
@@ -56,7 +58,11 @@ class HomeDetailPage extends StatelessWidget {
                         .make(),
                     catalog.desc.text.textStyle(context.captionStyle).xl.make(),
                     10.heightBox,
-                    10.heightBox,
+                    "Dolore clita ipsum gubergren sed dolor amet voluptua diam sadipscing, sit et voluptua magna dolor justo takimata eirmod amet. Diam erat tempor sed lorem. Et diam clita stet sed lorem, lorem sed lorem vero stet. Dolor dolores stet duo elitr ipsum sanctus et amet. Diam magna ipsum nonumy eirmod. Dolor."
+                        .text
+                        .textStyle(context.captionStyle)
+                        .make()
+                        .p16(),
                   ]).py64(),
                 ),
               ),
