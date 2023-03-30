@@ -12,18 +12,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
     loadData();
-
   }
 
   loadData() async {
-    final catalogjson = await rootBundle.loadString("assets/files/catalog.json");
+    await Future.delayed(Duration(seconds: 2));
+    final catalogjson =
+        await rootBundle.loadString("assets/files/catalog.json");
     final decodedData = jsonDecode(catalogjson);
     final productsData = decodedData["products"];
     CatalogModel.items = List.from(productsData)
@@ -31,7 +31,6 @@ class _HomePageState extends State<HomePage> {
         .toList();
     setState(() {});
     // print(productsData);
-
   }
 
   @override
@@ -39,22 +38,63 @@ class _HomePageState extends State<HomePage> {
     // final dummylist = List.generate(20, (index) => CatalogModel.items[0]);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Catalog App",
+        title: Text(
+          "Catalog App",
           style: TextStyle(color: Colors.black),
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-          // itemCount: CatalogModel.items.length,
-          itemCount: CatalogModel.items.length,
-          itemBuilder: (context , index) {
-            return ItemWidget(
-              // item: CatalogModel.items[index],
-              item: CatalogModel.items[index],
-            );
-          }
-        ),
+        child: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
+            ? GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 16,
+                ),
+                itemBuilder: (context, index) {
+                  final item = CatalogModel.items[index];
+                  return Card(
+                    clipBehavior: Clip.antiAlias,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    // elevation: 2,
+                    child: GridTile(
+                      header: Container(
+                        child: Text(
+                          item.name,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Colors.deepPurple,
+                        ),
+                      ),
+                      child: Image.network(item.image),
+                      footer: Container(
+                        child: Text(
+                          item.price.toString(),
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                itemCount: CatalogModel.items.length,
+              )
+            // ? ListView.builder(
+            //     itemCount: CatalogModel.items.length,
+            // itemBuilder: (context, index) => ItemWidget(
+            //     item: CatalogModel.items[index],
+            //   ),
+            //   )
+            : Center(
+                child: CircularProgressIndicator(color: Colors.deepPurple),
+              ),
       ),
       drawer: MyDrawer(),
     );
