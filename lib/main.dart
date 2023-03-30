@@ -25,7 +25,6 @@ class MyApp  extends StatelessWidget {
         MyRoutes.homeRoute:(context) => HomePage(),// oboject of Home page class
         MyRoutes.loginRoute:(context) =>  LoginPage(),
       },
-
     );
   }
 }
