@@ -1,0 +1,57 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "iphone 12 pro",
+      "desc": "Apple iphone 12th generation",
+      "price": 999,
+      "color": "#33505a",
+      "image": "https://cdn.vodafone.co.uk/en/assets/images/desktop/Apple_iPhone_12_Pro_Max_pacific_blue-full-product-front-600.png"
+    },
+
+    {
+      "id": 2,
+      "name": "Pixel 5",
+      "desc": "Google Pixel phone 5th generation",
+      "price": 699,
+      "color": "#00ac51",
+      "image": "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41Sj4uhAoFL.jpg"
+    },
+
+    {
+      "id": 3,
+      "name": "M1 Macbook Air",
+      "desc": "Apple Mackbook air with apple silicon",
+      "price": 2999,
+      "color": "#e0bfae",
+      "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6516/6516173_sd.jpg;maxHeight=640;maxWidth=550"
+    },
+
+    {
+      "id": 4,
+      "name": "Airpods Pro",
+      "desc": "Apple Airpods Pro 1st generation",
+      "price": 699,
+      "color": "#e3e4e9",
+      "image": "https://api-rayashop.freetls.fastly.net/media/catalog/product/cache/4e49ac3a70c0b98a165f3fa6633ffee1/q/a/qa25qgn_-_imgur_1.jpg?format=jpeg&width=368"
+    },
+
+    {
+      "id": 5,
+      "name": "Playstation 5",
+      "desc": "Sony Playstation 5th generation",
+      "price": 500,
+      "color": "#544ee4",
+      "image": "https://cdn.shopify.com/s/files/1/0655/8436/5816/products/3-36-3_47a68e31-78c8-4cbe-b158-b4d647571d53.png?v=1663153596"
+    },
+
+    {
+      "id": 6,
+      "name": "Realme 9 Pro+ 5g",
+      "desc": "Aurora Green, 128 GB (8 GB RAM)",
+      "price": 26999,
+      "color": "#7c95eb",
+      "image": "https://rukminim1.flixcart.com/image/416/416/kzogn0w0/mobile/u/v/p/-original-imagbmf3zehwydcw.jpeg?q=70"
+    }
+  ]
+}
