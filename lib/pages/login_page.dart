@@ -3,27 +3,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class LoginPage extends StatefulWidget {
-
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
   String name = "";
-  bool  changeButton = false;
+  bool changeButton = false;
   final _formKey = GlobalKey<FormState>();
 
   moveToHome(BuildContext context) async {
-    if(_formKey.currentState!.validate()) {
-      setState(() {
-        changeButton = true;
-      });
-      await Future.delayed(Duration(milliseconds: 200));
-      await Navigator.pushNamed(context, MyRoutes.homeRoute);
-      setState(() {
-        changeButton = false;
-      });
-    }
+    // if (_formKey.currentState!.validate()) {
+    //   setState(() {
+    //     changeButton = true;
+    //   });
+    //   await Future.delayed(Duration(milliseconds: 400));
+    //   await Navigator.pushNamed(context, MyRoutes.homeRoute);
+    //   setState(() {
+    //     changeButton = false;
+    //   });
+    // }
+
+    setState(() {
+      changeButton = true;
+    });
+    await Future.delayed(Duration(seconds: 1));
+    await Navigator.pushNamed(context, MyRoutes.homeRoute);
+    setState(() {
+      changeButton = false;
+    });
   }
 
   @override
@@ -35,19 +43,25 @@ class _LoginPageState extends State<LoginPage> {
           key: _formKey,
           child: Column(
             children: [
-              Image.asset("assets/images/hey_login_image.png",
+              Image.asset(
+                "assets/images/hey_login_image.png",
                 fit: BoxFit.cover,
               ),
-              SizedBox(height: 20,),
-              Text("Welcome ${name.toUpperCase()}",
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "Welcome ${name.toUpperCase()}",
                 style: TextStyle(
-                    fontSize: 28,
-                    ),
+                  fontSize: 28,
                 ),
-              SizedBox(height: 20,
+              ),
+              SizedBox(
+                height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0,horizontal: 32.0),
+                padding: const EdgeInsets.symmetric(
+                    vertical: 16.0, horizontal: 32.0),
                 child: Column(
                   children: [
                     TextFormField(
@@ -56,22 +70,20 @@ class _LoginPageState extends State<LoginPage> {
                         labelText: "Username",
                       ),
                       maxLength: 8,
-                      inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp("[a-z,0-9]")),],
-
-
-                      validator: (value){
-                        if(value!.isEmpty){
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.allow(RegExp("[a-z,0-9]")),
+                      ],
+                      validator: (value) {
+                        if (value!.isEmpty) {
                           return "Username cannot be empty";
-                        }else if(value != "anish"){
+                        } else if (value != "anish") {
                           return "Username Incorrect";
                         }
                         return null;
                       },
-                      onChanged: (value){
+                      onChanged: (value) {
                         name = value;
-                        setState(() {
-
-                        });
+                        setState(() {});
                       },
                     ),
                     TextFormField(
@@ -81,42 +93,48 @@ class _LoginPageState extends State<LoginPage> {
                         labelText: "Password",
                       ),
                       maxLength: 6,
-                      validator: (value){
-                        if(value!.isEmpty){
+                      validator: (value) {
+                        if (value!.isEmpty) {
                           return "Password cannot be Empty";
-                        }else if(value.length<6){
+                        } else if (value.length < 6) {
                           return "Password length should be atleast 6";
-                        }else if(value != "123456"){
+                        } else if (value != "123456") {
                           return "Password Incorrect";
                         }
                         return null;
                       },
                     ),
-                    SizedBox(height: 40,
+                    SizedBox(
+                      height: 40,
                     ),
 
                     Material(
-                      borderRadius: BorderRadius.circular(changeButton? 50 : 8),
+                      borderRadius:
+                          BorderRadius.circular(changeButton ? 50 : 8),
                       color: Colors.deepPurple,
                       child: InkWell(
                         onTap: () => moveToHome(context),
                         child: AnimatedContainer(
-                          duration: Duration(milliseconds: 200),
-                          width: changeButton? 50 : 160,
+                          duration: Duration(seconds: 1),
+                          width: changeButton ? 50 : 160,
                           height: 50,
                           alignment: Alignment.center,
-                          child: changeButton? Icon(Icons.done,color: Colors.white,) : Text(
-                            "Login",
-                            style: TextStyle(
-                                color:Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                            ),
-                          ),
+                          child: changeButton
+                              ? Icon(
+                                  Icons.done,
+                                  color: Colors.white,
+                                )
+                              : Text(
+                                  "Login",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
+                                ),
                         ),
                       ),
                     ),
-
 
                     // ElevatedButton(
                     //     onPressed: (){
@@ -129,10 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                     //     )
                     //
                     // )
-
-
                   ],
-
                 ),
               ),
             ],
@@ -142,5 +157,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-
-
